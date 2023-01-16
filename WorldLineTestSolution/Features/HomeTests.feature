@@ -1,4 +1,4 @@
-﻿Feature: MainTabTests
+﻿Feature: HomeTests
 
 A short summary of the feature
 

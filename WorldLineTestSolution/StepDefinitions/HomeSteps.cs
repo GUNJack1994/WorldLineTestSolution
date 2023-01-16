@@ -4,7 +4,7 @@ using WorldLineTestSolution.Pages;
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class MainTabSteps
+    public class HomeSteps
     {
         IWebDriver _driver;
 
@@ -12,7 +12,7 @@ namespace WorldLineTestSolution.StepDefinitions
 
         private HomePage homePage;
 
-        public MainTabSteps(ScenarioContext scenarioContext)
+        public HomeSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = (IWebDriver)_scenarioContext["WebDriver"];
@@ -31,6 +31,12 @@ namespace WorldLineTestSolution.StepDefinitions
         public void WhenIClickOnTab(string tabName)
         {
             homePage.ClickOnSpecyficTab(tabName);
+        }
+
+        [When(@"I click on '([^']*)' subtab")]
+        public void WhenIClickOnInTab(string subTab)
+        {
+            homePage.ClickOnSpecyficSubTab(subTab);
         }
 
         [Then(@"I check all subtabs for '([^']*)' are compatible with documentation")]

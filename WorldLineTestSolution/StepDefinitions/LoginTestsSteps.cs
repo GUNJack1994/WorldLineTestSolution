@@ -5,7 +5,7 @@ using WorldLineTestSolution.Pages;
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class LogginTestsSteps
+    public class LoginTestsSteps
     {
         IWebDriver _driver;
 
@@ -13,7 +13,7 @@ namespace WorldLineTestSolution.StepDefinitions
 
         private LoginPage loginPage;
 
-        public LogginTestsSteps(ScenarioContext scenarioContext)
+        public LoginTestsSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = (IWebDriver)_scenarioContext["WebDriver"];
