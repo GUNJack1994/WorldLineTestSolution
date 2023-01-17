@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Helpers;
-using WorldLineTestSolution.Pages;
+using WorldLineTestSolution.Pages.SupportPages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
@@ -16,28 +17,31 @@ namespace WorldLineTestSolution.StepDefinitions
 
         private readonly ScenarioContext _scenarioContext;
 
-        private SupportPage supportPage;
+        private SupportPage _supportPage;
+
+        private FaqsPage _faqsPage;
 
         public SupportTabSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = (IWebDriver)_scenarioContext["WebDriver"];
-            supportPage = new SupportPage(_driver);
+            _supportPage = new SupportPage(_driver);
+            _faqsPage = new FaqsPage(_driver);
         }
 
         [When(@"I click on '([^']*)' Support tab")]
         public void WhenIClickOnSupportTab(string tabName)
         {
-            supportPage.ClickOnSupportSubTab(tabName);
+            _faqsPage.ClickOnSupportSubTab(tabName);
         }
 
         [When(@"I input text '([^']*)' for search")]
         public void WhenIInputTextForSearch(string text)
         {
-            _driver.WaitForElement(supportPage.SearchToolBar);
-            supportPage.SearchTextBox.SendKeys(text);
-            supportPage.SearchButton.Click();
-            _driver.WaitForElement(supportPage.SearchResultCount);
+            _driver.WaitForElement(_faqsPage.SearchToolBar);
+            _faqsPage.SearchTextBox.SendKeys(text);
+            _faqsPage.SearchButton.Click();
+            _driver.WaitForElement(_faqsPage.SearchResultCount);
         }
 
         [Then(@"I check if search result is '(not empty|empty)'")]
@@ -45,12 +49,18 @@ namespace WorldLineTestSolution.StepDefinitions
         {
             if (state != "empty")
             {
-                supportPage.SearchResult.Should().NotBeNullOrEmpty();
+                _faqsPage.SearchResult.Should().NotBeNullOrEmpty();
             }
             else 
             {
-                supportPage.SearchResult.Should().BeNullOrEmpty();
+                _faqsPage.SearchResult.Should().BeNullOrEmpty();
             }
+        }
+
+        [Then(@"I check every subTab for Support if there is no error")]
+        public void ThenICheckEverySubTabForIfThereIsNoError()
+        {
+            _supportPage.ClickOnAllSupportSubTabs();
         }
     }
 }

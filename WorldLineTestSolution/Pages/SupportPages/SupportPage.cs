@@ -7,29 +7,35 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using WorldLineTestSolution.Helpers;
 
-namespace WorldLineTestSolution.Pages
+namespace WorldLineTestSolution.Pages.SupportPages
 {
     public class SupportPage : BasePage
     {
+        private IWebDriver _driver { get; set; }
+
         public SupportPage(IWebDriver driver) : base(driver)
         {
+            _driver = driver;
         }
 
-        public override IWebDriver _driver { get; set; }
-
-        public override string PageUrl => throw new NotImplementedException();
+        public void ClickOnAllSupportSubTabs() 
+        {
+            foreach (var element in SupportTabsNames)
+            {
+                _driver.FindElement(By.XPath(SupportTabXpath + $"//a[contains(text(),'{element}')]")).Click();
+                var error = CheckIfErrorIsOccurred();
+                if (error)
+                {
+                    error.Should().Be(false, $"Error was occurred on {element}");
+                }
+            }
+        }
 
         public void ClickOnSupportSubTab(string tabName)
         {
             _driver.FindElement(By.XPath(SupportTabXpath + $"//a[text()='{tabName}']")).Click();
             _driver.WaitForElement(WorkFlowBox);
         }
-
-        public IWebElement FaqsPage => _driver.FindElement(By.Id("lnk_FaqOgone"));
-
-        public By SearchToolBar => By.Id("div-search-panel");
-
-        public IWebElement SearchTextBox => _driver.FindElement(By.Name("SearchedText"));
 
         public string SupportTabXpath => "//ul[@id='maintab']//li";
 
@@ -38,11 +44,5 @@ namespace WorldLineTestSolution.Pages
         public List<string> SupportTabsNames => SupportTabs.Select(x => x.Text).ToList();
 
         public By WorkFlowBox => By.ClassName("insidebg");
-
-        public IWebElement SearchButton => _driver.FindElement(By.Id("btn_ManageFaq"));
-
-        public By SearchResultCount => By.XPath("//*[@id='divfaq']/div/span");
-
-        public ReadOnlyCollection<IWebElement> SearchResult => _driver.FindElements(By.XPath("//div[@id='divfaq']//table//tbody//tr"));
     }
 }

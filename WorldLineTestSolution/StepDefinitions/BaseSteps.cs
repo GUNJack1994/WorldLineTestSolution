@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Drivers;
-using WorldLineTestSolution.Pages;
+using WorldLineTestSolution.Pages.LoginPages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
@@ -14,11 +15,11 @@ namespace WorldLineTestSolution.StepDefinitions
 
         private LoginPage loginPage;
 
-        public BaseSteps(ScenarioContext scenarioContext)
+        public BaseSteps(ScenarioContext scenarioContext, ISpecFlowOutputHelper output)
         {
             _scenarioContext = scenarioContext;
             _driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
-            loginPage = new LoginPage(_driver);
+            loginPage = new LoginPage(_driver);   
         }
 
         [Given(@"I am on loggin page")]

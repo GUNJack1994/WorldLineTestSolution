@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Helpers;
-using WorldLineTestSolution.Pages;
+using WorldLineTestSolution.Pages.LoginPages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {

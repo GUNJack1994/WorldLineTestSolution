@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
-using WorldLineTestSolution.Pages;
+using TechTalk.SpecFlow.Infrastructure;
+using WorldLineTestSolution.Pages.HomePages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {

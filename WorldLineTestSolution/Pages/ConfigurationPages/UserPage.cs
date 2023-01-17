@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 
-namespace WorldLineTestSolution.Pages
+namespace WorldLineTestSolution.Pages.ConfigurationPages
 {
-    public class ConfigurationPage : CommonMethods
+    public class UserPage : ConfigurationPage
     {
         private IWebDriver _driver;
 
-        public ConfigurationPage(IWebDriver driver) : base(driver)
+        public UserPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
         }

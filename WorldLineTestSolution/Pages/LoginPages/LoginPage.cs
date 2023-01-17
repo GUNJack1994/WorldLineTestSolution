@@ -1,18 +1,20 @@
 ﻿using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 
-namespace WorldLineTestSolution.Pages
+namespace WorldLineTestSolution.Pages.LoginPages
 {
     public class LoginPage : BasePage
     {
+        private IWebDriver _driver { get; set; }
+
         public LoginPage(IWebDriver driver) : base(driver)
         {
+            _driver = driver;
         }
 
-        public override IWebDriver _driver { get; set; }
+        public string PageUrl => "https://secure.ogone.com/Ncol/Test/Backoffice/login/";
 
-        public override string PageUrl => "https://secure.ogone.com/Ncol/Test/Backoffice/login/";
-
-        public void SignIn(string pspid, string password) 
+        public void SignIn(string pspid, string password)
         {
             PspidTextBox.SendKeys(pspid);
             PasswordTextBox.SendKeys(password);

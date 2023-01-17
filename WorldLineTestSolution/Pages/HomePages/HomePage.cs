@@ -1,27 +1,39 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using TechTalk.SpecFlow.Infrastructure;
+using TechTalk.SpecFlow.Tracing;
 using WorldLineTestSolution.Helpers;
 
-namespace WorldLineTestSolution.Pages
+namespace WorldLineTestSolution.Pages.HomePages
 {
     public class HomePage : BasePage
     {
         public HomePage(IWebDriver driver) : base(driver)
         {
+            _driver = driver;
         }
 
-        public override IWebDriver _driver { get; set; }
+        private IWebDriver _driver { get; set; }
 
-        public override string PageUrl => throw new NotImplementedException();
-
-        public void ClickOnAllMainTabs() 
+        public void ClickOnAllMainTabs()
         {
-            MainTabElements.ForEach(x => _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{x}']")).Click());
+            //MainTabElements.ForEach(x => _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{x}']")).Click());
+
+            foreach (var element in MainTabElements)
+            {
+                _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{element}']")).Click();
+                var error = CheckIfErrorIsOccurred();
+                if (error)
+                {
+                    error.Should().Be(false, $"Error was occurred on {element}");
+                }
+            }
         }
 
-        public void ClickOnSpecyficTab(string tabName) 
-        {              
+        public void ClickOnSpecyficTab(string tabName)
+        {
             _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{tabName}']")).Click();
             if (tabName != "Support")
             {
@@ -30,7 +42,7 @@ namespace WorldLineTestSolution.Pages
             }
         }
 
-        public void HoverOnSpectficTab(string tabName) 
+        public void HoverOnSpectficTab(string tabName)
         {
             var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
             _driver.WaitForElement(elementToFind);
@@ -45,10 +57,15 @@ namespace WorldLineTestSolution.Pages
             {
                 _driver.FindElement(By.XPath(SubTabXpath + $"//span[text()='{element}']")).Click();
                 _driver.WaitForElement(SubTabMainScreen);
+                var error = CheckIfErrorIsOccurred();
+                if (error)
+                {
+                    error.Should().Be(false, $"Error was occurred on {element}");
+                }
             }
         }
 
-        public void ClickOnSpecyficSubTab(string subTabName) 
+        public void ClickOnSpecyficSubTab(string subTabName)
         {
             _driver.FindElement(By.XPath(SubTabXpath + $"//span[text()='{subTabName}']")).Click();
         }

@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 using NUnit.Framework.Internal;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow.Assist;
+using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Drivers;
-using WorldLineTestSolution.Pages;
-using static WorldLineTestSolution.Pages.ConfigurationPage;
+using WorldLineTestSolution.Pages.ConfigurationPages;
+using static WorldLineTestSolution.Pages.ConfigurationPages.UserPage;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
@@ -19,18 +20,20 @@ namespace WorldLineTestSolution.StepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
         private ConfigurationPage _configurationPage;
+        private UserPage _userPage;
 
         public ConfigurationTabSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = (IWebDriver)_scenarioContext["WebDriver"];
             _configurationPage = new ConfigurationPage(_driver);
+            _userPage = new UserPage(_driver);
         }
 
         [When(@"I add new user")]
         public void WhenIAddNewUser()
         {
-            _configurationPage.ClickOnButton(_configurationPage.AddNewUserButton);
+            _userPage.ClickOnButton(_userPage.AddNewUserButton);
         }
 
         [When(@"I fill require fields for create new user")]
@@ -38,14 +41,19 @@ namespace WorldLineTestSolution.StepDefinitions
         {
             var datas = table.CreateInstance<NewUserFields>();
 
-            _configurationPage.FillTextBox(_configurationPage.UserIdTextBox, datas.UserId);
-            _configurationPage.FillTextBox(_configurationPage.UserNameTextBox, datas.UserName);
-            _configurationPage.FillTextBox(_configurationPage.EmailAdressTextBox, datas.EmailAddress);
-            _configurationPage.FillTextBox(_configurationPage.ConfirmPasswordTextBox, datas.ConfirmPassword);
+            _userPage.FillTextBox(_userPage.UserIdTextBox, datas.UserId);
+            _userPage.FillTextBox(_userPage.UserNameTextBox, datas.UserName);
+            _userPage.FillTextBox(_userPage.EmailAdressTextBox, datas.EmailAddress);
+            _userPage.FillTextBox(_userPage.ConfirmPasswordTextBox, datas.ConfirmPassword);
 
             //_configurationPage.ClickOnButton(_configurationPage.CreateButton);
         }
 
+        [Then(@"I check every subTab if there is no error")]
+        public void ThenICheckEverySubTabForIfThereIsNoError()
+        {
+            _configurationPage.ClickOnAllSubTabs();
+        }
 
         public record NewUserFields
         {

@@ -13,3 +13,9 @@ Examples:
 | Text      | State     |
 | Alias     | not empty |
 | Not Exist | empty     |
+
+Scenario: Check all tabs in Support
+	Given I am on loggin page
+	When I am singing into application by kpfront0b and Testing123#
+	And I click on 'Support' tab
+	Then I check every subTab for Support if there is no error
