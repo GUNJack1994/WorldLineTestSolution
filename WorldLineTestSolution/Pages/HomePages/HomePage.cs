@@ -19,8 +19,6 @@ namespace WorldLineTestSolution.Pages.HomePages
 
         public void ClickOnAllMainTabs()
         {
-            //MainTabElements.ForEach(x => _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{x}']")).Click());
-
             foreach (var element in MainTabElements)
             {
                 _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{element}']")).Click();

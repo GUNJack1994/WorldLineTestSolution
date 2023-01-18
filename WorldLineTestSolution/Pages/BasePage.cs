@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -47,5 +48,24 @@ namespace WorldLineTestSolution.Pages
         }
 
         private By ErrorIcon => By.XPath("//span[@class='warning-ico']");
+
+        public void ClickOnAllSubTabs()
+        {
+            foreach (var element in SubTabsNames)
+            {
+                _driver.FindElement(By.XPath(SubTabsXpath + $"//a[contains(text(),'{element}')]")).Click();
+                var error = CheckIfErrorIsOccurred();
+                if (error)
+                {
+                    error.Should().Be(false, $"Error was occurred on {element}");
+                }
+            }
+        }
+
+        public string SubTabsXpath => "//ul[@id='maintab']//li";
+
+        public ReadOnlyCollection<IWebElement> SubTabs => _driver.FindElements(By.XPath(SubTabsXpath));
+
+        public List<string> SubTabsNames => SubTabs.Select(x => x.Text).ToList();
     }
 }

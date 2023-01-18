@@ -49,12 +49,6 @@ namespace WorldLineTestSolution.StepDefinitions
             //_configurationPage.ClickOnButton(_configurationPage.CreateButton);
         }
 
-        [Then(@"I check every subTab if there is no error")]
-        public void ThenICheckEverySubTabForIfThereIsNoError()
-        {
-            _configurationPage.ClickOnAllSubTabs();
-        }
-
         public record NewUserFields
         {
             public string UserId { get; set; }

@@ -2,6 +2,8 @@
 using OpenQA.Selenium;
 using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Drivers;
+using WorldLineTestSolution.Pages;
+using WorldLineTestSolution.Pages.ConfigurationPages;
 using WorldLineTestSolution.Pages.LoginPages;
 
 namespace WorldLineTestSolution.StepDefinitions
@@ -13,25 +15,28 @@ namespace WorldLineTestSolution.StepDefinitions
 
         private readonly ScenarioContext _scenarioContext;
 
-        private LoginPage loginPage;
+        private BasePage _basePage;
+
+        private LoginPage _loginPage;
 
         public BaseSteps(ScenarioContext scenarioContext, ISpecFlowOutputHelper output)
         {
             _scenarioContext = scenarioContext;
             _driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
-            loginPage = new LoginPage(_driver);   
+            _basePage = new BasePage(_driver);
+            _loginPage = new LoginPage(_driver);   
         }
 
         [Given(@"I am on loggin page")]
         public void GivenIAmOnLogginPage()
         {
-            _driver.Url = loginPage.PageUrl;
+            _driver.Url = _loginPage.PageUrl;
         }
 
         [When(@"I am singing into application by (.*) and (.*)")]
         public void WhenIAmSingingIntoApplicationByKpfrontbAndTesting(string pspid, string password)
         {
-            loginPage.SignIn(pspid, password);
+            _loginPage.SignIn(pspid, password);
         }
 
         [When(@"I click on '([^']*)' button on '([^']*)' page")]
@@ -41,6 +46,12 @@ namespace WorldLineTestSolution.StepDefinitions
             var props = currentPage.GetType().GetProperties();
             var t = (IWebElement)props.First(x => x.Name == buttonName).GetValue(currentPage);
             t.Click();
+        }
+
+        [Then(@"I check every subTab if there is no error")]
+        public void ThenICheckEverySubTabForIfThereIsNoError()
+        {
+            _basePage.ClickOnAllSubTabs();
         }
     }
 }
