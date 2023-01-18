@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using TechTalk.SpecFlow.Infrastructure;
 
 namespace WorldLineTestSolution.Pages.LoginPages
 {
@@ -21,7 +20,9 @@ namespace WorldLineTestSolution.Pages.LoginPages
             SubmitButton.Click();
         }
 
-        public IWebElement PspidTextBox => _driver.FindElement(By.Id("txt_AuthenticationResult_PspId"));
+        public By PspidTextBoxXpath => By.Id("txt_AuthenticationResult_PspId");
+
+        public IWebElement PspidTextBox => _driver.FindElement(PspidTextBoxXpath);
 
         public IWebElement PasswordTextBox => _driver.FindElement(By.Id("pwd_AuthenticationResult_Password"));
 
@@ -34,5 +35,11 @@ namespace WorldLineTestSolution.Pages.LoginPages
         public By ErrorLoginXpath => By.XPath("//div[@class='margin-left35']");
 
         public string ErrorLoginMessage => _driver.FindElement(ErrorLoginXpath).Text;
+
+        public IWebElement UserInfoButton => _driver.FindElement(By.Id("userInfoModalSVG"));
+
+        public By LogoutButtonXpath => By.Id("logout");
+
+        public IWebElement LogoutButton => _driver.FindElement(LogoutButtonXpath);
     }
 }

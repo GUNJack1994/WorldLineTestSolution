@@ -1,9 +1,7 @@
-﻿using System.Reflection;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Pages;
-using WorldLineTestSolution.Pages.ConfigurationPages;
 using WorldLineTestSolution.Pages.LoginPages;
 
 namespace WorldLineTestSolution.StepDefinitions
@@ -39,14 +37,15 @@ namespace WorldLineTestSolution.StepDefinitions
             _loginPage.SignIn(pspid, password);
         }
 
-        [When(@"I click on '([^']*)' button on '([^']*)' page")]
-        public void WhenIClickOnButtonOnPage(string buttonName, string pageName)
-        {
-            var currentPage = _scenarioContext.Get<object>(pageName);
-            var props = currentPage.GetType().GetProperties();
-            var t = (IWebElement)props.First(x => x.Name == buttonName).GetValue(currentPage);
-            t.Click();
-        }
+        //TO DO
+        //[When(@"I click on '([^']*)' button on '([^']*)' page")]
+        //public void WhenIClickOnButtonOnPage(string buttonName, string pageName)
+        //{
+        //    var currentPage = _scenarioContext.Get<object>(pageName);
+        //    var props = currentPage.GetType().GetProperties();
+        //    var t = (IWebElement)props.First(x => x.Name == buttonName).GetValue(currentPage);
+        //    t.Click();
+        //}
 
         [Then(@"I check every subTab if there is no error")]
         public void ThenICheckEverySubTabForIfThereIsNoError()

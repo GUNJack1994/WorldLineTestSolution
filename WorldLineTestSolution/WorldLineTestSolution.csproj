@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Support\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Pages\ConfigurationPages\CreateProductionAccountPage.cs" />
   </ItemGroup>
 
