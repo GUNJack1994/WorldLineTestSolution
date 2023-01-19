@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -21,7 +22,12 @@ namespace WorldLineTestSolution.Pages.HomePages
         {
             foreach (var element in MainTabElements)
             {
-                _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{element}']")).Click();
+                //_driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{element}']")).Click();
+                var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{element}']");
+
+                Actions action = new Actions(_driver);
+                action.DoubleClick(_driver.FindElement(elementToFind)).Build().Perform();
+
                 var error = CheckIfErrorIsOccurred();
                 if (error)
                 {
@@ -32,7 +38,13 @@ namespace WorldLineTestSolution.Pages.HomePages
 
         public void ClickOnSpecyficTab(string tabName)
         {
-            _driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{tabName}']")).Click();
+            //_driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{tabName}']")).Click();
+
+            var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
+
+            Actions action = new Actions(_driver);
+            action.DoubleClick(_driver.FindElement(elementToFind)).Build().Perform();
+
             if (tabName != "Support")
             {
                 var elementToWait = By.XPath(SubTabXpath);
@@ -40,14 +52,14 @@ namespace WorldLineTestSolution.Pages.HomePages
             }
         }
 
-        public void HoverOnSpectficTab(string tabName)
-        {
-            var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
-            _driver.WaitForElement(elementToFind);
+        //public void HoverOnSpectficTab(string tabName)
+        //{
+        //    var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
+        //    _driver.WaitForElement(elementToFind);
 
-            Actions action = new Actions(_driver);
-            action.MoveToElement(_driver.FindElement(elementToFind)).Perform();
-        }
+        //    Actions action = new Actions(_driver);
+        //    action.MoveToElement(_driver.FindElement(elementToFind)).Perform();
+        //}
 
         public void ClickOnAllSubMainTabs()
         {

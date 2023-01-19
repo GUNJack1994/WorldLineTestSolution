@@ -1,5 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using System.Diagnostics;
+using OpenQA.Selenium;
+using TechTalk.SpecFlow;
 using WorldLineTestSolution.Drivers;
+using WorldLineTestSolution.Helpers;
 
 namespace WorldLineTestSolution.Hooks
 {
@@ -18,6 +21,13 @@ namespace WorldLineTestSolution.Hooks
         {
             SeleniumDriver seleniumDriver = new SeleniumDriver(_scenarioContext);
             _scenarioContext.Set(seleniumDriver, "SeleniumDriver");
+        }
+
+        [AfterTestRun]
+        public static void AfterTestRun() 
+        {
+            ProcessHelper processHelper = new ProcessHelper();
+            processHelper.RunScript();
         }
 
         [AfterScenario]
