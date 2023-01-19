@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace WorldLineTestSolution.Pages.ConfigurationPages
 {
@@ -16,5 +10,30 @@ namespace WorldLineTestSolution.Pages.ConfigurationPages
         {
             _driver = driver;
         }
+
+        public IWebElement GetUserFromTable(string userName) 
+        {
+            return _driver.FindElement(By.XPath(UserNamePath + $"[contains(text(), '{userName}')]"));
+        }
+
+        public void DeactivateUser(string userName) 
+        {
+            ClickOnButton(DeactivateButton(userName));
+        }
+
+        public IWebElement GetDeactivateMessage(string userName) 
+        {
+            return _driver.FindElement(By.XPath(DeactivateMessagePath + $"//div[contains(text(), '{userName}')]"));
+        }
+
+        public string UserNamePath => "//div[@id='div-usergrid']//table//tbody//tr//td";
+
+        public By UserNameXpath => By.XPath(UserNamePath);
+
+        public IWebElement DeactivateButton(string userName) => _driver.FindElement(By.XPath($"//a[contains(@userId, '{userName}')]"));
+
+        public string DeactivateMessagePath => "//*[@id='successMessage']";
+
+        public By DeactivateMessageXpath => By.XPath(DeactivateMessagePath);
     }
 }

@@ -28,5 +28,11 @@ namespace WorldLineTestSolution.Pages.ConfigurationPages
         public IWebElement ConfirmPasswordTextBox => _driver.FindElement(By.Id("pwd_Password"));
 
         public IWebElement CreateButton => _driver.FindElement(By.Id("btn_SaveUser"));
+
+        public IWebElement BackToListButton => _driver.FindElement(By.Id("lnk_User_Index"));
+
+        public By NewUserMessageXpath => By.XPath("//div[@id='generalMessage']//div//div[contains(text(), 'New user successfully added.')]");
+
+        public IWebElement NewUserMessage => _driver.FindElement(NewUserMessageXpath);
     }
 }
