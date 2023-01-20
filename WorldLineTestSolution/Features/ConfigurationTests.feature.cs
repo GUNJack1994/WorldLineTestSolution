@@ -35,7 +35,8 @@ namespace WorldLineTestSolution.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ConfigurationTests", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ConfigurationTests", "Tests related to Configuration tab\r\nHappy flow related to add new user and disabl" +
+                    "e new user\r\nCheck all tabs in Configuration tab", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,7 +81,7 @@ namespace WorldLineTestSolution.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -100,19 +101,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 8
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
- testRunner.When("I am singing into application by kpfront0b and Testing123#", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 8
- testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 9
- testRunner.And("I click on \'Users\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I am logging in application by \'kpfront0b\' and \'Testing123#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
+ testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
+ testRunner.And("I click on \'Users\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
  testRunner.And("I add new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -125,10 +126,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "TestUser",
                             "Test@test.com",
                             "Testing123#"});
-#line 11
+#line 13
  testRunner.And("I fill require fields for create new user", ((string)(null)), table1, "And ");
 #line hidden
-#line 14
+#line 16
  testRunner.Then("I check if \'TestId\' user was created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -142,7 +143,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Deactivate user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 16
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -162,22 +163,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 17
+#line 19
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 18
- testRunner.When("I am singing into application by kpfront0b and Testing123#", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 19
- testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 20
- testRunner.And("I click on \'Users\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I am logging in application by \'kpfront0b\' and \'Testing123#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
- testRunner.And("I deactivate \'TestId\' user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
+ testRunner.And("I click on \'Users\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+ testRunner.And("I deactivate \'TestId\' user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
  testRunner.Then("I check if deactivate message for \'TestId\' was shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -185,7 +186,7 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check all tabs in Configuration")]
+        [NUnit.Framework.DescriptionAttribute("Check all tabs in Configuration tab")]
         [NUnit.Framework.TestCaseAttribute("Password", null)]
         [NUnit.Framework.TestCaseAttribute("Account", null)]
         [NUnit.Framework.TestCaseAttribute("Payment methods", null)]
@@ -195,13 +196,13 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("Template", null)]
         [NUnit.Framework.TestCaseAttribute("Create production account", null)]
         [NUnit.Framework.TestCaseAttribute("Error logs", null)]
-        public virtual void CheckAllTabsInConfiguration(string subTabName, string[] exampleTags)
+        public virtual void CheckAllTabsInConfigurationTab(string subTabName, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("SubTabName", subTabName);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check all tabs in Configuration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check all tabs in Configuration tab", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -221,19 +222,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
+#line 27
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 26
- testRunner.When("I am singing into application by kpfront0b and Testing123#", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 27
- testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 28
- testRunner.And(string.Format("I click on \'{0}\' subtab", subTabName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I am logging in application by \'kpfront0b\' and \'Testing123#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 29
+ testRunner.And("I click on \'Configuration\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 30
+ testRunner.And(string.Format("I click on \'{0}\' subtab", subTabName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 31
  testRunner.Then("I check every subTab if there is no error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

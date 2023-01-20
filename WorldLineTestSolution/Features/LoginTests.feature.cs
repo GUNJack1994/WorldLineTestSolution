@@ -35,7 +35,8 @@ namespace WorldLineTestSolution.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "LoginTests", "Frist smoke test", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "LoginTests", "Tests relatet to Login page\r\nCheck if loggin in is correctly\r\nCheck if logout is " +
+                    "correctly", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,10 +75,10 @@ namespace WorldLineTestSolution.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Successful Login with Valid Credentials")]
+        [NUnit.Framework.DescriptionAttribute("Successful login and fail login")]
         [NUnit.Framework.TestCaseAttribute("kpfront0b", "Testing123#", "success", "Congratulations! Your test account is now active!", null)]
         [NUnit.Framework.TestCaseAttribute("WrongPspid", "WrongPassword", "fail", "Some of the data entered is incorrect. Please retry.", null)]
-        public virtual void SuccessfulLoginWithValidCredentials(string pSPID, string password, string result, string loginMessage, string[] exampleTags)
+        public virtual void SuccessfulLoginAndFailLogin(string pSPID, string password, string result, string loginMessage, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -85,8 +86,8 @@ namespace WorldLineTestSolution.Features
             argumentsOfScenario.Add("Password", password);
             argumentsOfScenario.Add("Result", result);
             argumentsOfScenario.Add("LoginMessage", loginMessage);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login with Valid Credentials", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful login and fail login", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -106,13 +107,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 9
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
- testRunner.When(string.Format("I am singing into application by {0} and {1}", pSPID, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+ testRunner.When(string.Format("I am logging in application by \'{0}\' and \'{1}\'", pSPID, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 8
+#line 11
  testRunner.Then(string.Format("I check if login result is {0} with message {1}", result, loginMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -126,7 +127,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check logout function", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 14
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -146,16 +147,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 15
+#line 18
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
- testRunner.When("I am singing into application by kpfront0b and Testing123#", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 19
+ testRunner.When("I am logging in application by \'kpfront0b\' and \'Testing123#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 17
+#line 20
  testRunner.And("I click on logout button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 21
  testRunner.Then("I check if login screen is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

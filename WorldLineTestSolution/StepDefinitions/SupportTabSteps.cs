@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using TechTalk.SpecFlow.Infrastructure;
+﻿using OpenQA.Selenium;
 using WorldLineTestSolution.Helpers;
 using WorldLineTestSolution.Pages.SupportPages;
 

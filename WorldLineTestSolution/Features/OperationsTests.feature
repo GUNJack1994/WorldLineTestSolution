@@ -1,10 +1,11 @@
 ﻿Feature: OperationsTests
 
-A short summary of the feature
+Tests related to Operations tab
+Check all tabs in Operations tab
 
-Scenario Outline: Check all tabs in Operations
+Scenario Outline: Check all tabs in Operations tab
 	Given I am on loggin page
-	When I am singing into application by kpfront0b and Testing123#
+	When I am logging in application by 'kpfront0b' and 'Testing123#'
 	And I click on 'Operations' tab
 	And I click on '<SubTabName>' subtab
 	Then I check every subTab if there is no error

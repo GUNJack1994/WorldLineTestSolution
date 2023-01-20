@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using OpenQA.Selenium;
-using TechTalk.SpecFlow;
+﻿using OpenQA.Selenium;
 using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Helpers;
 
@@ -27,7 +25,8 @@ namespace WorldLineTestSolution.Hooks
         public static void AfterTestRun() 
         {
             ProcessHelper processHelper = new ProcessHelper();
-            processHelper.RunScript();
+            processHelper.CheckingIfReportFilesExist();
+            processHelper.GenerateReport();
         }
 
         [AfterScenario]

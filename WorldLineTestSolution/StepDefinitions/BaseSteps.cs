@@ -31,8 +31,8 @@ namespace WorldLineTestSolution.StepDefinitions
             _driver.Url = _loginPage.PageUrl;
         }
 
-        [When(@"I am singing into application by (.*) and (.*)")]
-        public void WhenIAmSingingIntoApplicationByKpfrontbAndTesting(string pspid, string password)
+        [When(@"I am logging in application by '([^']*)' and '([^']*)'")]
+        public void WhenIAmLoggingInApplicationByAnd(string pspid, string password)
         {
             _loginPage.SignIn(pspid, password);
         }

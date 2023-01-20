@@ -11,35 +11,35 @@ namespace WorldLineTestSolution.Pages.LoginPages
             _driver = driver;
         }
 
-        public string PageUrl => "https://secure.ogone.com/Ncol/Test/Backoffice/login/";
+        internal string PageUrl => "https://secure.ogone.com/Ncol/Test/Backoffice/login/";
 
         public void SignIn(string pspid, string password)
         {
             PspidTextBox.SendKeys(pspid);
-            PasswordTextBox.SendKeys(password);
+            _passwordTextBox.SendKeys(password);
             SubmitButton.Click();
         }
 
-        public By PspidTextBoxXpath => By.Id("txt_AuthenticationResult_PspId");
+        internal By PspidTextBoxXpath => By.Id("txt_AuthenticationResult_PspId");
 
-        public IWebElement PspidTextBox => _driver.FindElement(PspidTextBoxXpath);
+        internal IWebElement PspidTextBox => _driver.FindElement(PspidTextBoxXpath);
 
-        public IWebElement PasswordTextBox => _driver.FindElement(By.Id("pwd_AuthenticationResult_Password"));
+        private IWebElement _passwordTextBox => _driver.FindElement(By.Id("pwd_AuthenticationResult_Password"));
 
-        public IWebElement SubmitButton => _driver.FindElement(By.Id("btn_Login"));
+        private IWebElement SubmitButton => _driver.FindElement(By.Id("btn_Login"));
 
-        public By CorrectLoginXpath => By.XPath("//div[@class='info-msg margin10']");
+        internal By CorrectLoginXpath => By.XPath("//div[@class='info-msg margin10']");
 
-        public string CorrectLoginMessage => _driver.FindElement(CorrectLoginXpath).Text;
+        internal string CorrectLoginMessage => _driver.FindElement(CorrectLoginXpath).Text;
 
-        public By ErrorLoginXpath => By.XPath("//div[@class='margin-left35']");
+        internal By ErrorLoginXpath => By.XPath("//div[@class='margin-left35']");
 
-        public string ErrorLoginMessage => _driver.FindElement(ErrorLoginXpath).Text;
+        internal string ErrorLoginMessage => _driver.FindElement(ErrorLoginXpath).Text;
 
-        public IWebElement UserInfoButton => _driver.FindElement(By.Id("userInfoModalSVG"));
+        internal IWebElement UserInfoButton => _driver.FindElement(By.Id("userInfoModalSVG"));
 
-        public By LogoutButtonXpath => By.Id("logout");
+        internal By LogoutButtonXpath => By.Id("logout");
 
-        public IWebElement LogoutButton => _driver.FindElement(LogoutButtonXpath);
+        internal IWebElement LogoutButton => _driver.FindElement(LogoutButtonXpath);
     }
 }

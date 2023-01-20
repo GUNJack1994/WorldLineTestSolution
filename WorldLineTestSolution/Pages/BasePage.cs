@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamitey;
+﻿using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using TechTalk.SpecFlow.Infrastructure;
-using TechTalk.SpecFlow.Tracing;
 using WorldLineTestSolution.Drivers;
 
 namespace WorldLineTestSolution.Pages
@@ -23,6 +14,7 @@ namespace WorldLineTestSolution.Pages
         {
             _driver = driver;
         }
+
         public void ClickOnButton(IWebElement element)
         {
             element.Click();
@@ -38,7 +30,7 @@ namespace WorldLineTestSolution.Pages
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             try
             {
-                wait.Until(ExpectedConditions.ElementExists(ErrorIcon));
+                wait.Until(ExpectedConditions.ElementExists(_errorIcon));
                 return true;
             }
             catch (Exception)
@@ -47,13 +39,13 @@ namespace WorldLineTestSolution.Pages
             }
         }
 
-        private By ErrorIcon => By.XPath("//span[@class='warning-ico']");
+        private By _errorIcon => By.XPath("//span[@class='warning-ico']");
 
         public void ClickOnAllSubTabs()
         {
-            foreach (var element in SubTabsNames)
+            foreach (var element in _subTabsNames)
             {
-                _driver.FindElement(By.XPath(SubTabsXpath + $"//a[contains(text(),'{element}')]")).Click();
+                _driver.FindElement(By.XPath(_subTabsXpath + $"//a[contains(text(),'{element}')]")).Click();
                 var error = CheckIfErrorIsOccurred();
                 if (error)
                 {
@@ -62,10 +54,10 @@ namespace WorldLineTestSolution.Pages
             }
         }
 
-        public string SubTabsXpath => "//ul[@id='maintab']//li";
+        private string _subTabsXpath => "//ul[@id='maintab']//li";
 
-        public ReadOnlyCollection<IWebElement> SubTabs => _driver.FindElements(By.XPath(SubTabsXpath));
+        private ReadOnlyCollection<IWebElement> _subTabs => _driver.FindElements(By.XPath(_subTabsXpath));
 
-        public List<string> SubTabsNames => SubTabs.Select(x => x.Text).ToList();
+        public List<string> _subTabsNames => _subTabs.Select(x => x.Text).ToList();
     }
 }

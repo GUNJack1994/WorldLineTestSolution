@@ -35,7 +35,7 @@ namespace WorldLineTestSolution.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "OperationsTests", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "OperationsTests", "Tests related to Operations tab\r\nCheck all tabs in Operations tab", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,19 +74,19 @@ namespace WorldLineTestSolution.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check all tabs in Operations")]
+        [NUnit.Framework.DescriptionAttribute("Check all tabs in Operations tab")]
         [NUnit.Framework.TestCaseAttribute("Financial history", null)]
         [NUnit.Framework.TestCaseAttribute("New transaction", null)]
         [NUnit.Framework.TestCaseAttribute("View transactions", null)]
         [NUnit.Framework.TestCaseAttribute("Electronic reporting", null)]
         [NUnit.Framework.TestCaseAttribute("Batch Manager", null)]
-        public virtual void CheckAllTabsInOperations(string subTabName, string[] exampleTags)
+        public virtual void CheckAllTabsInOperationsTab(string subTabName, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("SubTabName", subTabName);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check all tabs in Operations", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check all tabs in Operations tab", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -106,19 +106,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
  testRunner.Given("I am on loggin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
- testRunner.When("I am singing into application by kpfront0b and Testing123#", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 8
- testRunner.And("I click on \'Operations\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I am logging in application by \'kpfront0b\' and \'Testing123#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.And(string.Format("I click on \'{0}\' subtab", subTabName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I click on \'Operations\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
+ testRunner.And(string.Format("I click on \'{0}\' subtab", subTabName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
  testRunner.Then("I check every subTab if there is no error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

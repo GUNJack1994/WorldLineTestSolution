@@ -1,29 +1,24 @@
 ﻿using System.Collections.ObjectModel;
-using System.Xml.Linq;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using TechTalk.SpecFlow.Infrastructure;
-using TechTalk.SpecFlow.Tracing;
 using WorldLineTestSolution.Helpers;
 
 namespace WorldLineTestSolution.Pages.HomePages
 {
     public class HomePage : BasePage
     {
+        private IWebDriver _driver { get; set; }
+
         public HomePage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
         }
 
-        private IWebDriver _driver { get; set; }
-
         public void ClickOnAllMainTabs()
         {
             foreach (var element in MainTabElements)
             {
-                //_driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{element}']")).Click();
-                var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{element}']");
+                var elementToFind = By.XPath(_mainTabXpath + $"//span[text()='{element}']");
 
                 Actions action = new Actions(_driver);
                 action.DoubleClick(_driver.FindElement(elementToFind)).Build().Perform();
@@ -38,9 +33,7 @@ namespace WorldLineTestSolution.Pages.HomePages
 
         public void ClickOnSpecyficTab(string tabName)
         {
-            //_driver.FindElement(By.XPath(MainTabXpath + $"//span[text()='{tabName}']")).Click();
-
-            var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
+            var elementToFind = By.XPath(_mainTabXpath + $"//span[text()='{tabName}']");
 
             Actions action = new Actions(_driver);
             action.DoubleClick(_driver.FindElement(elementToFind)).Build().Perform();
@@ -52,21 +45,12 @@ namespace WorldLineTestSolution.Pages.HomePages
             }
         }
 
-        //public void HoverOnSpectficTab(string tabName)
-        //{
-        //    var elementToFind = By.XPath(MainTabXpath + $"//span[text()='{tabName}']");
-        //    _driver.WaitForElement(elementToFind);
-
-        //    Actions action = new Actions(_driver);
-        //    action.MoveToElement(_driver.FindElement(elementToFind)).Perform();
-        //}
-
         public void ClickOnAllSubMainTabs()
         {
             foreach (var element in SubTabElements)
             {
                 _driver.FindElement(By.XPath(SubTabXpath + $"//span[text()='{element}']")).Click();
-                _driver.WaitForElement(SubTabMainScreen);
+                _driver.WaitForElement(_subTabMainScreen);
                 var error = CheckIfErrorIsOccurred();
                 if (error)
                 {
@@ -75,23 +59,20 @@ namespace WorldLineTestSolution.Pages.HomePages
             }
         }
 
-        public void ClickOnSpecyficSubTab(string subTabName)
-        {
-            _driver.FindElement(By.XPath(SubTabXpath + $"//span[text()='{subTabName}']")).Click();
-        }
+        internal void ClickOnSpecyficSubTab(string subTabName) => _driver.FindElement(By.XPath(SubTabXpath + $"//span[text()='{subTabName}']")).Click();
 
-        public string MainTabXpath => "//div[@id='headernavigation']//ul//li";
+        private string _mainTabXpath => "//div[@id='headernavigation']//ul//li";
 
-        public ReadOnlyCollection<IWebElement> MainTab => _driver.FindElements(By.XPath(MainTabXpath));
+        private ReadOnlyCollection<IWebElement> _mainTab => _driver.FindElements(By.XPath(_mainTabXpath));
 
-        public List<string> MainTabElements => MainTab.Select(x => x.Text).ToList();
+        internal List<string> MainTabElements => _mainTab.Select(x => x.Text).ToList();
 
-        public string SubTabXpath => "//ul[@id='myogonemenu']//li";
+        internal string SubTabXpath => "//ul[@id='myogonemenu']//li";
 
-        public ReadOnlyCollection<IWebElement> SubMainTab => _driver.FindElements(By.XPath(SubTabXpath));
+        private ReadOnlyCollection<IWebElement> _subMainTab => _driver.FindElements(By.XPath(SubTabXpath));
 
-        public List<string> SubTabElements => SubMainTab.Select(x => x.Text).ToList();
+        internal List<string> SubTabElements => _subMainTab.Select(x => x.Text).ToList();
 
-        private By SubTabMainScreen => By.ClassName("mid-grid");
+        private By _subTabMainScreen => By.ClassName("mid-grid");
     }
 }

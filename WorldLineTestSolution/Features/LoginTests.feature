@@ -1,10 +1,13 @@
 ﻿Feature: LoginTests
 
-Frist smoke test
+Tests relatet to Login page
+Check if loggin in is correctly
+Check if logout is correctly
 
-Scenario Outline: Successful Login with Valid Credentials
+
+Scenario Outline: Successful login and fail login
 	Given I am on loggin page
-	When I am singing into application by <PSPID> and <Password>
+	When I am logging in application by '<PSPID>' and '<Password>'
 	Then I check if login result is <Result> with message <LoginMessage>
 Examples: 
 | PSPID      | Password      | Result  | LoginMessage                                         |
@@ -13,6 +16,6 @@ Examples:
 
 Scenario: Check logout function
 	Given I am on loggin page
-	When I am singing into application by kpfront0b and Testing123#
+	When I am logging in application by 'kpfront0b' and 'Testing123#'
 	And I click on logout button
 	Then I check if login screen is visible

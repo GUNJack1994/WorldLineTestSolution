@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using TechTalk.SpecFlow.Infrastructure;
+﻿using OpenQA.Selenium;
 
 namespace WorldLineTestSolution.Pages.ConfigurationPages
 {
@@ -17,22 +11,22 @@ namespace WorldLineTestSolution.Pages.ConfigurationPages
             _driver = driver;
         }
 
-        public IWebElement AddNewUserButton => _driver.FindElement(By.Id("AddUser"));
+        internal IWebElement AddNewUserButton => _driver.FindElement(By.Id("AddUser"));
 
-        public IWebElement UserIdTextBox => _driver.FindElement(By.Id("txt_SelectedUserId"));
+        internal IWebElement UserIdTextBox => _driver.FindElement(By.Id("txt_SelectedUserId"));
 
-        public IWebElement UserNameTextBox => _driver.FindElement(By.Id("txt_UserName"));
+        internal IWebElement UserNameTextBox => _driver.FindElement(By.Id("txt_UserName"));
 
-        public IWebElement EmailAdressTextBox => _driver.FindElement(By.Id("txt_UserEmail"));
+        internal IWebElement EmailAdressTextBox => _driver.FindElement(By.Id("txt_UserEmail"));
 
-        public IWebElement ConfirmPasswordTextBox => _driver.FindElement(By.Id("pwd_Password"));
+        internal IWebElement ConfirmPasswordTextBox => _driver.FindElement(By.Id("pwd_Password"));
 
-        public IWebElement CreateButton => _driver.FindElement(By.Id("btn_SaveUser"));
+        internal IWebElement CreateButton => _driver.FindElement(By.Id("btn_SaveUser"));
 
-        public IWebElement BackToListButton => _driver.FindElement(By.Id("lnk_User_Index"));
+        internal IWebElement BackToListButton => _driver.FindElement(By.Id("lnk_User_Index"));
 
-        public By NewUserMessageXpath => By.XPath("//div[@id='generalMessage']//div//div[contains(text(), 'New user successfully added.')]");
+        internal By NewUserMessageXpath => By.XPath("//div[@id='generalMessage']//div//div[contains(text(), 'New user successfully added.')]");
 
-        public IWebElement NewUserMessage => _driver.FindElement(NewUserMessageXpath);
+        internal IWebElement NewUserMessage => _driver.FindElement(NewUserMessageXpath);
     }
 }

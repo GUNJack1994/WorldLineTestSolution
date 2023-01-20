@@ -15,9 +15,9 @@ namespace WorldLineTestSolution.Pages.SupportPages
 
         public void ClickOnAllSupportSubTabs() 
         {
-            foreach (var element in SupportTabsNames)
+            foreach (var element in _supportTabsNames)
             {
-                _driver.FindElement(By.XPath(SupportTabXpath + $"//a[contains(text(),'{element}')]")).Click();
+                _driver.FindElement(By.XPath(_supportTabXpath + $"//a[contains(text(),'{element}')]")).Click();
                 var error = CheckIfErrorIsOccurred();
                 if (error)
                 {
@@ -28,16 +28,16 @@ namespace WorldLineTestSolution.Pages.SupportPages
 
         public void ClickOnSupportSubTab(string tabName)
         {
-            _driver.FindElement(By.XPath(SupportTabXpath + $"//a[text()='{tabName}']")).Click();
-            _driver.WaitForElement(WorkFlowBox);
+            _driver.FindElement(By.XPath(_supportTabXpath + $"//a[text()='{tabName}']")).Click();
+            _driver.WaitForElement(_workFlowBox);
         }
 
-        public string SupportTabXpath => "//ul[@id='maintab']//li";
+        private string _supportTabXpath => "//ul[@id='maintab']//li";
 
-        public ReadOnlyCollection<IWebElement> SupportTabs => _driver.FindElements(By.XPath(SupportTabXpath));
+        private ReadOnlyCollection<IWebElement> _supportTabs => _driver.FindElements(By.XPath(_supportTabXpath));
 
-        public List<string> SupportTabsNames => SupportTabs.Select(x => x.Text).ToList();
+        private List<string> _supportTabsNames => _supportTabs.Select(x => x.Text).ToList();
 
-        public By WorkFlowBox => By.ClassName("insidebg");
+        private By _workFlowBox => By.ClassName("insidebg");
     }
 }

@@ -10,7 +10,9 @@ namespace WorldLineTestSolution.StepDefinitions
     public class ConfigurationTabSteps : DriverProvider
     {
         private readonly ScenarioContext _scenarioContext;
+
         private ConfigurationPage _configurationPage;
+
         private UserPage _userPage;
 
         public ConfigurationTabSteps(ScenarioContext scenarioContext)
@@ -31,7 +33,7 @@ namespace WorldLineTestSolution.StepDefinitions
         public void WhenIFillRequireFieldsForCreateNewUser(Table table)
         {
             var datas = table.CreateInstance<NewUserFields>();
-            var currentDate = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt").Replace(" ", "");
+            var currentDate = DateTime.Now.ToString("yyyy-MM-dd-h:mm:ss-tt");
 
             _userPage.FillTextBox(_userPage.UserIdTextBox, datas.UserId + currentDate);
             _userPage.FillTextBox(_userPage.UserNameTextBox, datas.UserName);

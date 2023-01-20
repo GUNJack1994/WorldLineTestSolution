@@ -1,10 +1,12 @@
 ﻿Feature: SupportTabTests
 
-A short summary of the feature
+Tests related to Support tab
+Check if searching in faq's works correctly
+Check all tabs in Support tab
 
 Scenario Outline: Check FAQ's searching
 	Given I am on loggin page
-	When I am singing into application by kpfront0b and Testing123#
+	When I am logging in application by 'kpfront0b' and 'Testing123#'
 	And I click on 'Support' tab
 	And I click on 'Frequently Asked Questions (FAQs)' Support tab
 	And I input text '<Text>' for search
@@ -16,6 +18,6 @@ Examples:
 
 Scenario: Check all tabs in Support
 	Given I am on loggin page
-	When I am singing into application by kpfront0b and Testing123#
+	When I am logging in application by 'kpfront0b' and 'Testing123#'
 	And I click on 'Support' tab
 	Then I check every subTab for Support if there is no error

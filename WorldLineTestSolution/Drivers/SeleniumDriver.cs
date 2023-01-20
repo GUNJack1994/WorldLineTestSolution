@@ -6,7 +6,7 @@ namespace WorldLineTestSolution.Drivers
     public class SeleniumDriver
     {
 
-        private IWebDriver driver;
+        private IWebDriver _driver;
 
         private readonly ScenarioContext _scenarioContext;
 
@@ -17,14 +17,14 @@ namespace WorldLineTestSolution.Drivers
 
         public IWebDriver Setup() 
         {
-            driver = new ChromeDriver();
+            _driver = new ChromeDriver();
 
-            _scenarioContext.Set(driver, "WebDriver");
+            _scenarioContext.Set(_driver, "WebDriver");
 
-            driver.Manage().Window.Maximize();
-            _scenarioContext["WebDriver"] = driver;
+            _driver.Manage().Window.Maximize();
+            _scenarioContext["WebDriver"] = _driver;
 
-            return driver;
+            return _driver;
         }
     }
 }

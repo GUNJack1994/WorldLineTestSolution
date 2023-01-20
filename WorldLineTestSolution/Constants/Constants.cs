@@ -1,9 +1,8 @@
-﻿
-namespace WorldLineTestSolution.Constants
+﻿namespace WorldLineTestSolution.Constants
 {
     public static class Constants
     {
-        public static List<string> TabNamesFromDocumentation = new List<string>()
+        internal static List<string> TabNamesFromDocumentation = new List<string>()
             {
                 { "Home" },
                 { "Support" },
@@ -12,7 +11,7 @@ namespace WorldLineTestSolution.Constants
                 { "Operations" }
             };
 
-        public static List<string> SubTabNamesForConfigurations = new List<string>()
+        internal static List<string> SubTabNamesForConfigurations = new List<string>()
         {
             { "Password" },
             { "Account" },
@@ -25,13 +24,13 @@ namespace WorldLineTestSolution.Constants
             { "Error logs" }
         };
 
-        public static List<string> SubTabNamesForAdvanced = new List<string>()
+        internal static List<string> SubTabNamesForAdvanced = new List<string>()
         {
             { "Fraud detection" },
             { "Subscription" }
         };
 
-        public static List<string> SubTabNamesForOperations = new List<string>()
+        internal static List<string> SubTabNamesForOperations = new List<string>()
         {
             { "Financial history" },
             { "New transaction" },
