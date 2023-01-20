@@ -5,8 +5,6 @@ namespace WorldLineTestSolution.Pages.SupportPages
 {
     public class FaqsPage : SupportPage
     {
-        private IWebDriver _driver { get; set; }
-
         public FaqsPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;

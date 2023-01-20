@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using TechTalk.SpecFlow.Infrastructure;
+﻿using TechTalk.SpecFlow.Infrastructure;
 using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Pages;
 using WorldLineTestSolution.Pages.LoginPages;
@@ -7,10 +6,8 @@ using WorldLineTestSolution.Pages.LoginPages;
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class BaseSteps
+    public class BaseSteps : DriverProvider
     {
-        public IWebDriver _driver;
-
         private readonly ScenarioContext _scenarioContext;
 
         private BasePage _basePage;

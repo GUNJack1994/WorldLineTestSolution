@@ -4,8 +4,6 @@ namespace WorldLineTestSolution.Pages.ConfigurationPages
 {
     public class UserPage : ConfigurationPage
     {
-        private IWebDriver _driver;
-
         public UserPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;

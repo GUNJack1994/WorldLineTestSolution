@@ -1,14 +1,13 @@
 ﻿using OpenQA.Selenium;
+using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Helpers;
 using WorldLineTestSolution.Pages.SupportPages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class SupportTabSteps
+    public class SupportTabSteps : DriverProvider
     {
-        IWebDriver _driver;
-
         private readonly ScenarioContext _scenarioContext;
 
         private SupportPage _supportPage;

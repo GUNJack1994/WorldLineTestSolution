@@ -8,8 +8,6 @@ namespace WorldLineTestSolution.Pages
 {
     public class BasePage : DriverProvider
     {
-        protected IWebDriver _driver;
-
         public BasePage(IWebDriver driver)
         {
             _driver = driver;

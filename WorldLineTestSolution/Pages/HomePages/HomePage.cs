@@ -7,8 +7,6 @@ namespace WorldLineTestSolution.Pages.HomePages
 {
     public class HomePage : BasePage
     {
-        private IWebDriver _driver { get; set; }
-
         public HomePage(IWebDriver driver) : base(driver)
         {
             _driver = driver;

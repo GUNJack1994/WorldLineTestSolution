@@ -1,13 +1,12 @@
 ﻿using OpenQA.Selenium;
+using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Pages.HomePages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class HomeSteps
+    public class HomeSteps : DriverProvider
     {
-        IWebDriver _driver;
-
         private readonly ScenarioContext _scenarioContext;
 
         private HomePage _homePage;

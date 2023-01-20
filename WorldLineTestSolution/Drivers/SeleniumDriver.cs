@@ -5,7 +5,6 @@ namespace WorldLineTestSolution.Drivers
 {
     public class SeleniumDriver
     {
-
         private IWebDriver _driver;
 
         private readonly ScenarioContext _scenarioContext;

@@ -4,8 +4,6 @@ namespace WorldLineTestSolution.Pages.LoginPages
 {
     public class LoginPage : BasePage
     {
-        private IWebDriver _driver { get; set; }
-
         public LoginPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;

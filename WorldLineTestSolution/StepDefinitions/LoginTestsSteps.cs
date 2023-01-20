@@ -1,14 +1,13 @@
 ﻿using OpenQA.Selenium;
+using WorldLineTestSolution.Drivers;
 using WorldLineTestSolution.Helpers;
 using WorldLineTestSolution.Pages.LoginPages;
 
 namespace WorldLineTestSolution.StepDefinitions
 {
     [Binding]
-    public class LoginTestsSteps
+    public class LoginTestsSteps : DriverProvider
     {
-        IWebDriver _driver;
-
         private readonly ScenarioContext _scenarioContext;
 
         private LoginPage _loginPage;
